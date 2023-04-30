@@ -3,6 +3,8 @@
 
 
 #include <iostream>
+#include <conio.h>
+using namespace std;
 
 // Ваші файли загловки 
 //
@@ -14,11 +16,20 @@ int main()
     //  Головне меню завдань
     //  Функції та класи можуть знаходитись в інших файлах проекту
 
-    int chain = 1;
-    if (chain == 1) chain = mainExample1();
-    if (chain == 2) chain = mainExample2();
-    if (chain == 3) chain = mainExample3();
-    if (chain == 4) chain = mainExample4();
-    if (chain == 5) chain = mainExample5();
+	char ch;
+	do {
+		cout << "\nSelect Task: \n";
+		cout << "    1.  Task1 \n";
+		cout << "    2.  Task2 \n";
+		cout << "    3.  Task3 \n";
+		cout << "    4.  Exit \n";
+
+		ch = _getch();
+		switch (ch) {
+		case '1': Task1(); break;
+		case '2': Task2(); break;
+		case '3': Task3(); break;
+		}
+	} while (ch != '4');
 
 }
