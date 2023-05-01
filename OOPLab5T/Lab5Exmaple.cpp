@@ -171,11 +171,81 @@ using namespace std;
 		obj2.printInfo();
 	}
 	
+	class People {
+	public:
+		string FirstName, LastName;
+		int Age;
+		string Gender;
+		People() {
+		}
+		People(string firstName, string lastName, int age, string gender) {
+			this->FirstName = firstName;
+			this->LastName = lastName;
+			this->Gender = gender;
+			this->Age = age;
+
+		}
+
+		People& operator=(People& a) {
+			this->FirstName = a.FirstName;
+			this->LastName = a.LastName;
+			this->Gender = a.Gender;
+			this->Age = a.Age;
+			return *this;
+		}
+
+		People(const People& ref_Point)
+		{
+			this->FirstName = ref_Point.FirstName;
+			this->LastName = ref_Point.LastName;
+			this->Gender = ref_Point.Gender;
+			this->Age = ref_Point.Age;
+		}
+	};
+	ostream& operator<<(ostream& os, People& n) {
+		cout << " FirstName: " << n.FirstName << " LastName: " << n.LastName << " Age: " << n.Age << " Gender: " << n.Gender;
+		return os;
+	}
+	istream& operator>>(istream& iso, People& n) {
+		cin >> n.FirstName >> n.LastName >> n.Age >> n.Gender;
+		return iso;
+	}
+
+	class Student : public People {
+	public:
+		int Group;
+		float AveregeMark;
+		Student() {
+		}
+		Student(string firstName, string lastName, int age, string gender, int group, float averegeMark) : People(firstName, lastName, age, gender) {
+			this->Group = group;
+			this->AveregeMark = averegeMark;
+		}
+
+	};
+	ostream& operator<<(ostream& os, Student& n) {
+		cout << " FirstName: " << n.FirstName << " LastName: " << n.LastName << " Age: " << n.Age << " Gender: " << n.Gender;
+		cout << " Group: " << n.Group << " AveregeMark: " << n.AveregeMark;
+		return os;
+	}
+	istream& operator>>(istream& iso, Student& n) {
+		cin >> n.FirstName >> n.LastName >> n.Age >> n.Gender >> n.Group >> n.AveregeMark;
+		return iso;
+	}
+
+
 	void Task3() {
-		Car obj = Car("yu", 7, 8);
-		obj.printInfo();
-		obj.setPower(4);
-		obj.printInfo();
+		Student obj3 = Student("Ann", "Chervinska", 17, "f", 141, 90.1);
+		cout <<"OBJ3: "<< obj3;
+		cout << endl<< "New values:" << endl;
+		cin >> obj3; 
+		cout << "OBJ3: " << obj3 << endl;
+		People obj4 = People(obj3);
+		cout << "OBJ4: " << obj4 << endl;
+		Student obj5 = Student("black", "boroda", 54, "m", 222, 80.1);
+		obj4 = obj5;
+		cout << "OBJ4(after prisvoennya): " << obj4;
+
 	}
 	//
 //
